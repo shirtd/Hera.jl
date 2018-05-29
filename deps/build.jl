@@ -11,7 +11,7 @@ SUFF = is_apple() ? "dylib" : "so"
 INC = "-I$SRC/geom_bottleneck/include"
 provides(BuildProcess, (@build_steps begin
     !("hera" in readdir("src")) ? run(`git clone $URL $SRC`) : println("$SRC exists")
-    mkdir(LIB)
+    mkpath(LIB)
     @build_steps begin FileRule(joinpath("usr","lib","libhera.$SUFF"),
         @build_steps begin
             `g++ -c src/hera.cpp $INC -o $LIB/hera.o`
