@@ -14,3 +14,8 @@ then, from Julia
 
     Pkg.clone("https://github.com/shirtd/Hera.jl.git")
     Pkg.build("Hera")
+
+To test,
+
+    using Hera
+    Hera.test() == 0.5
