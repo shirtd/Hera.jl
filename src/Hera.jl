@@ -2,7 +2,12 @@ __precompile__(true)
 
 module Hera
 
-    libhera = joinpath(dirname(@__FILE__),"..","deps","usr","lib","libhera")
+    const depsfile = joinpath(dirname(@__FILE__), "..", "deps", "deps.jl")
+    if isfile(depsfile)
+        include(depsfile)
+    else
+        error("Hera not properly installed. Please run Pkg.build(\"Hera\") then restart Julia.")
+    end
 
     function bottleneck(A,B)
         ccall((:bottleneck, libhera),
