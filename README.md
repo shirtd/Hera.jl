@@ -1,6 +1,10 @@
 # Hera.jl
 
 Hera requires Boost.
+On OSX, with Homebrew
+
+    brew install boost
+
 On Linux
 
     sudo apt install libboost-all-dev
