@@ -1,5 +1,11 @@
 # Hera.jl
 
+A Julia wrapper for computing the Bottleneck distance using Hera.
+
+    https://bitbucket.org/grey_narn/hera
+
+## Build
+
 Hera requires Boost.
 
 On OSX, with Homebrew
