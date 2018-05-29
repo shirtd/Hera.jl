@@ -14,8 +14,10 @@ provides(BuildProcess, (@build_steps begin
     mkpath(LIB)
     @build_steps begin FileRule(joinpath("usr","lib","libhera.$SUFF"),
         @build_steps begin
-            `g++ -c src/hera.cpp $INC -o $LIB/hera.o`
-            `g++ -static-libstdc++ -dynamiclib -fPIC $INC -o $LIB/libhera.$SUFF $LIB/hera.o`
+            `gcc -c -fPIC -Isrc/hera/geom_bottleneck/include src/hera.cpp -o usr/lib/hera.o`
+            `gcc usr/lib/hera.o -shared -o usr/lib/libhera.$SUFF`
+            # `g++ -c src/hera.cpp $INC -o $LIB/hera.o`
+            # `g++ -static-libstdc++ -dynamiclib -fPIC $INC -o $LIB/libhera.$SUFF $LIB/hera.o`
         end)
     end
 end), libhera)
