@@ -12,3 +12,5 @@ run(`g++ -c src/hera.cpp $INC -o usr/lib/hera.o`)
 run(`g++ -static-libstdc++ -dynamiclib -fPIC $INC -o usr/lib/libhera.dylib usr/lib/hera.o`)
 
 libhera = library_dependency("libhera")
+
+@BinDeps.install Dict(:libhera => :libhera)
