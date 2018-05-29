@@ -3,7 +3,7 @@ using BinDeps
 @BinDeps.setup
 
 if !("hera" in readdir("src"))
-    run(`git clone https://bitbucket.org/grey_narn/hera.git`)
+    run(`git clone https://bitbucket.org/grey_narn/hera.git src`)
 end
 
 mkpath("usr/lib")
