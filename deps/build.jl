@@ -11,7 +11,7 @@ SUFF = is_apple() ? "dylib" : "so"
 INC = "-I$SRC/geom_bottleneck/include"
 CMD = if is_apple()
     [`g++ -std=c++11 -c src/hera.cpp $INC -o $LIB/hera.o`,
-        `g++ -dynamiclib -fPIC $INC -o $LIB/libhera.$SUFF $LIB/hera.o`]
+        `g++ -static-libstdc++ -dynamiclib -fPIC $INC -o $LIB/libhera.$SUFF $LIB/hera.o`]
     else
         [`gcc -c -fPIC -Isrc/hera/geom_bottleneck/include src/hera.cpp -o usr/lib/hera.o`,
             `gcc usr/lib/hera.o -shared -o usr/lib/libhera.$SUFF`]
