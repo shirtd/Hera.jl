@@ -16,6 +16,7 @@ else
     [`gcc -c -fPIC $INC src/hera.cpp -o $LIB/hera.o`,
         `gcc $LIB/hera.o -shared -o $LIB/libhera.$SUFF`]
 end
+
 provides(BuildProcess, (@build_steps begin
     !("hera" in readdir("src")) ? run(`git clone $URL $SRC`) : println("$SRC exists")
     mkpath(LIB)
