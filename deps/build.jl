@@ -8,7 +8,7 @@ URL = "https://bitbucket.org/grey_narn/hera.git"
 SRC = "src/hera"
 LIB = "usr/lib"
 SUFF = is_apple() ? "dylib" : "so"
-INC = "-I$SRC/geom_bottleneck/include"
+INC = "-I/usr/local/include/boost -I$SRC/geom_bottleneck/include"
 CMD = if is_apple()
     [`g++ -std=c++11 -c src/hera.cpp $INC -o $LIB/hera.o`,
         `g++ -static-libstdc++ -dynamiclib -fPIC $INC -o $LIB/libhera.$SUFF $LIB/hera.o`]

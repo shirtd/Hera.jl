@@ -11,7 +11,10 @@ extern "C" {
             p.first = A[2*i];
             p.second = A[2*i + 1];
             diagramA.push_back(p);
+            // delete A[2*i];
+            // delete A[2*i + 1];
         }
+        // delete[] A;
 
         PairVector diagramB;
         for (int i=0; i < m; i++) {
@@ -19,7 +22,10 @@ extern "C" {
             p.first = B[2*i];
             p.second = B[2*i + 1];
             diagramB.push_back(p);
+            // delete B[2*i];
+            // delete B[2*i + 1];
         }
+        // delete[] B;
 
         return hera::bottleneckDistExact(diagramA, diagramB, 0);
     }
