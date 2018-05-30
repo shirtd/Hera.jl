@@ -1,1 +1,5 @@
 *.stash
+deps/src/hera
+deps/src/_hera.cpp
+deps/usr
+deps/deps.jl
