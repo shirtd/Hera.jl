@@ -16,17 +16,12 @@ module Hera
     end
 
     function bottlenecks(dgms)
-        @show n = length(dgms)
+        n = length(dgms)
         ns = Array{Cint,1}(map(x->size(x,1), dgms))
         data = vcat(map(x->x'[:],dgms)...)
-        @show ns
-        @show data
-        m = Int(n*(n - 1)/2)
-        ret = Ref{Array{Cdouble,1}}(-1*ones(Float64,m))
-        # ret = Vector{Cdouble}(m)
+        ret = Ref{Array{Cdouble,1}}(-1*ones(Float64,Int(n*(n - 1)/2)))
         ccall((:bottlenecks, libhera),
             Void, (Cint, Ptr{Cint}, Ptr{Float64}, Ref{Array{Cdouble,1}}),
-            # Void, (Cint, Ptr{Cint}, Ptr{Float64}, Ref{Cdouble}),
             n, ns, data, ret)
         getindex(ret)
     end

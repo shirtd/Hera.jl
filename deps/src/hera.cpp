@@ -29,13 +29,10 @@ extern "C" {
 
     PairVector to_pairs_rng(int s, int n, double* X) {
         PairVector V;
-        std::cout << s << "-" << s+n << std::endl;
         for (int i=0; i < n; i++) {
             std::pair<double, double> p;
             p.first = X[2*s + 2*i];
             p.second = X[2*s + 2*i + 1];
-            std::cout << "    " << p.first << ",";
-            std::cout << p.second << std::endl;
             V.push_back(p);
         }
         return V;
@@ -44,16 +41,12 @@ extern "C" {
     void bottlenecks(int n, int* ns, double* d, double** ret) {
         int s = 0;
         PairVector* dgms = new PairVector[n];
-        std::cout << ns[0] << "," << ns[1] << "," << ns[2] << std::endl;
         for (int i=0; i < n; i++) {
-            std::cout << "s = " << s << ", n = " << ns[i] << std::endl;
             dgms[i] = to_pairs_rng(s,ns[i],d);
             s = s + ns[i];
         }
 
         int l = 0;
-        // int m = n*(n - 1)/2;
-        // double* ret = new double[m];
         for (int i=0; i < n; i++){
             for (int j=i+1; j < n; j++) {
                 (*ret)[l] = hera::bottleneckDistExact(dgms[i], dgms[j], 0);
@@ -61,6 +54,5 @@ extern "C" {
             }
         }
         delete[] dgms;
-        // return ret;
     }
 }
