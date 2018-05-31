@@ -23,7 +23,12 @@ module Hera
         ccall((:bottlenecks, libhera),
             Void, (Cint, Ptr{Cint}, Ptr{Float64}, Ref{Array{Cdouble,1}}),
             n, ns, data, ret)
-        getindex(ret)
+        m = getindex(ret)
+        M,l = (zeros(Float64,n,n),0)
+        for i=1:n,j=i+1:n
+            M[i,j] = M[j,i] = m[l+=1]
+        end
+        M
     end
 
     function test()
