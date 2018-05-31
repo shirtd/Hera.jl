@@ -25,3 +25,13 @@ To test,
 
     using Hera
     Hera.test() == 0.5
+
+## Usage
+
+For any n x 2 array A and m x 2 array B the bottleneck distance can be computed as
+
+    bottleneck(A, B)
+
+For an array of D n persistence diagrams in the above format the n x n distance matrix of all pairwise bottleneck distances between them can be computed as
+
+    bottlenecks(D)

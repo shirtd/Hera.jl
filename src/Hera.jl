@@ -31,6 +31,14 @@ module Hera
         M
     end
 
+    function torus(n, R, r)
+        t = rand(n,2)
+        x = (R + r*cos.(2pi*t[:,1])).*cos.(2pi*t[:,2])
+        y = (R + r*cos.(2pi*t[:,1])).*sin.(2pi*t[:,2])
+        z = r*sin.(2pi*t[:,1])
+        [x y z]
+    end
+
     function test()
         data = [[0.0 1.0; 2.0 3.0; 4.0 5.0],
                 [0.0 1.0; 1.0 2.0; 3.0 4.0],
