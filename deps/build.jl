@@ -13,7 +13,7 @@ CMD = if is_apple()
     [`g++ -std=c++11 -c src/hera.cpp -I$(INC[1]) -I$(INC[2]) -o $LIB/hera.o`,
         `g++ -static-libstdc++ -dynamiclib -fPIC -I$(INC[1]) -I$(INC[2]) -o $LIB/libhera.$SUFF $LIB/hera.o`]
 else
-    [`gcc -c -fPIC -I$(INC[1]) -I$(INC[2]) src/hera.cpp -o $LIB/hera.o`,
+    [`gcc -std=c++11 -c -fPIC -I$(INC[1]) -I$(INC[2]) src/hera.cpp -o $LIB/hera.o`,
         `gcc $LIB/hera.o -shared -o $LIB/libhera.$SUFF`]
 end
 
